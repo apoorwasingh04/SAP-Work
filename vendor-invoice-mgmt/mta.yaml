@@ -1,0 +1,162 @@
+_schema-version: '3.2'
+ID: vendor-invoice-mgmt
+version: 1.0.0
+description: Enterprise Vendor Invoice Management System
+
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+
+modules:
+  # ---------------------------------------------------------------- CAP service
+  - name: vendor-invoice-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 1G
+      disk-quota: 1G
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: vendor-invoice-db
+      - name: vendor-invoice-uaa
+      - name: vendor-invoice-destination
+      - name: vendor-invoice-html5-repo-rt
+
+  # ------------------------------------------------------- HANA deployer module
+  - name: vendor-invoice-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: vendor-invoice-db
+
+  # ------------------------------------------------ HTML5 apps deployer module
+  - name: vendor-invoice-app-deployer
+    type: com.sap.application.content
+    path: gen
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: vendor-invoice-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: manageinvoices
+          artifacts:
+            - manageinvoices.zip
+          target-path: resources/
+
+  # UI application (Fiori Elements) content
+  - name: manageinvoices
+    type: html5
+    path: app/manage-invoices
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build:cf
+      supported-platforms: []
+
+  # ------------------------------------------- Destination content (Work Zone)
+  - name: vendor-invoice-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: vendor-invoice-uaa
+        parameters:
+          service-key:
+            name: uaa-key
+      - name: vendor-invoice-html5-repo-host
+        parameters:
+          service-key:
+            name: repo-host-key
+      - name: vendor-invoice-destination
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: vendorinvoice_html_repo_host
+              ServiceInstanceName: vendor-invoice-html5-repo-host
+              ServiceKeyName: repo-host-key
+              sap.cloud.service: vendorinvoice
+            - Name: vendorinvoice_uaa
+              ServiceInstanceName: vendor-invoice-uaa
+              ServiceKeyName: uaa-key
+              Authentication: OAuth2UserTokenExchange
+              sap.cloud.service: vendorinvoice
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+
+resources:
+  # -------------------------------------------------------- HANA HDI container
+  - name: vendor-invoice-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+
+  # ------------------------------------------------------------ XSUAA instance
+  - name: vendor-invoice-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: vendor-invoice-mgmt-${org}-${space}
+        tenant-mode: dedicated
+
+  # ---------------------------------------------------------- Destination svc
+  - name: vendor-invoice-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: S4HANA_BP
+                Description: S/4HANA Business Partner API
+                URL: https://my-s4-system.example.com
+                Type: HTTP
+                ProxyType: Internet
+                Authentication: BasicAuthentication
+                # user/password supplied securely at deploy time or via BTP cockpit
+
+  # -------------------------------------------- HTML5 application repository
+  - name: vendor-invoice-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  - name: vendor-invoice-html5-repo-rt
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime

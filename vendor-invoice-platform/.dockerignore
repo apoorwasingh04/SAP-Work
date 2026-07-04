@@ -1,0 +1,10 @@
+# Root context is used by the gateway build (needs only gateway/ + frontend/webapp)
+**/node_modules
+**/gen
+**/*.db
+**/*.db-*
+**/.env
+services
+docs
+*.md
+.git

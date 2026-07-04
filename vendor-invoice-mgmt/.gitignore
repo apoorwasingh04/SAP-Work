@@ -1,0 +1,11 @@
+node_modules/
+gen/
+*.db
+*.db-*
+.env
+default-env.json
+mta_archives/
+dist/
+.DS_Store
+*.log
+resources/

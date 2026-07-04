@@ -1,0 +1,40 @@
+{
+  "name": "integration-service",
+  "version": "1.0.0",
+  "description": "S/4HANA integration microservice (Business Partner sync)",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@cap-js/postgres": "^1",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "jest": "^29",
+    "axios": "^1"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "deploy": "cds deploy",
+    "test": "jest --runInBand"
+  },
+  "jest": { "testEnvironment": "node", "testTimeout": 30000 },
+  "cds": {
+    "requires": {
+      "db": { "kind": "postgres", "impl": "@cap-js/postgres" },
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "admin":  { "password": "admin",  "roles": ["Admin"] },
+          "viewer": { "password": "viewer", "roles": ["Viewer"] },
+          "system": { "password": "system-secret", "roles": ["Admin","internal","VendorManager","Approver","Viewer"] }
+        }
+      }
+    },
+    "[development]": { "requires": { "db": { "kind": "sqlite", "credentials": { "url": ":memory:" } } } },
+    "[test]":        { "requires": { "db": { "kind": "sqlite", "credentials": { "url": ":memory:" } } } }
+  }
+}

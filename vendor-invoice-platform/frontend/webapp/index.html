@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Invoice Management</title>
+  <link rel="icon" href="data:,">
+  <style>html, body { height: 100%; margin: 0; }</style>
+
+  <!-- Show any bootstrap error instead of a blank screen -->
+  <script>
+    window.addEventListener('error', function (e) {
+      var box = document.getElementById('boot-error');
+      if (!box) {
+        box = document.createElement('pre');
+        box.id = 'boot-error';
+        box.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;margin:0;padding:12px;' +
+          'background:#fdecea;color:#8a1c12;font:12px/1.5 monospace;white-space:pre-wrap;max-height:60%;overflow:auto;border-bottom:2px solid #d33';
+        (document.body || document.documentElement).appendChild(box);
+        box.textContent = 'Startup error(s):\n';
+      }
+      box.textContent += '• ' + (e.message || (e.error && e.error.message) || 'error') +
+        (e.filename ? ('  @ ' + e.filename + ':' + e.lineno) : '') + '\n';
+    });
+  </script>
+
+  <!-- Fiori Launchpad sandbox: provides the shell services (app-state, variant
+       persistence, navigation) that Fiori Elements List Report/Object Page need.
+       Running FE bare (ComponentSupport) is what caused storeInnerAppStateAsync
+       and the app-state failures. -->
+  <script>
+    window["sap-ushell-config"] = {
+      defaultRenderer: "fiori2",
+      renderers: { fiori2: { componentData: { config: { enableSearch: false } } } },
+      applications: {
+        "vendorinvoice-manage": {
+          title: "Manage Invoices",
+          description: "Vendor Invoice Management",
+          additionalInformation: "SAPUI5.Component=vendorinvoice.ui",
+          applicationType: "URL",
+          url: "./",
+          navigationMode: "embedded"
+        }
+      }
+    };
+  </script>
+
+  <script src="https://ui5.sap.com/1.120.28/test-resources/sap/ushell/bootstrap/sandbox.js"
+          id="sap-ushell-bootstrap"></script>
+
+  <script id="sap-ui-bootstrap"
+    src="https://ui5.sap.com/1.120.28/resources/sap-ui-core.js"
+    data-sap-ui-libs="sap.m, sap.ushell, sap.fe.templates"
+    data-sap-ui-theme="sap_horizon"
+    data-sap-ui-compat-version="edge"
+    data-sap-ui-async="true"
+    data-sap-ui-binding-syntax="complex"
+    data-sap-ui-frame-options="allow"
+    data-sap-ui-flexibility-services="[]"
+    data-sap-ui-xx-component-preload="off"
+    data-sap-ui-resource-roots='{"vendorinvoice.ui": "./"}'></script>
+
+  <script>
+    sap.ui.getCore().attachInit(function () {
+      sap.ushell.Container.createRenderer(undefined, true).then(function (renderer) {
+        renderer.placeAt("content");
+        // Open the app instead of the (empty) launchpad home. Navigate EXACTLY
+        // ONCE (re-navigating to the same intent creates a duplicate component id
+        // that poisons the app). We wait for the shell to settle on #Shell-home
+        // via its first hashchange, then redirect once; a timeout is the fallback.
+        var navigated = false;
+        function openApp() {
+          if (navigated) return;
+          navigated = true;
+          if (window.location.hash.indexOf("vendorinvoice-manage") === -1) {
+            window.location.hash = "vendorinvoice-manage";
+          }
+        }
+        window.addEventListener("hashchange", function once() {
+          window.removeEventListener("hashchange", once);
+          openApp();
+        });
+        setTimeout(openApp, 1500);
+      });
+    });
+  </script>
+</head>
+<body class="sapUiBody" id="content"></body>
+</html>

@@ -1,0 +1,11 @@
+ID,vendorName,email,phone,address,country_code,currency_code,taxId,externalSystemId,status,assignedManager
+0205ef68-11e2-4b98-99f1-59b01c44e502,Acme Corp,sales@acme.com,+1-415-555-0100,1 Market Street San Francisco,US,USD,US-ACM-01,S4-1001,APPROVED,manager
+75de7773-a83d-421e-a78b-e26ea1f80ab3,Tech Solutions Ltd,info@techsol.co.uk,+44-20-7946-0102,221B Baker Street London,GB,EUR,GB-TEC-02,S4-1002,APPROVED,manager2
+2b15a6d5-ea0c-46d9-a6f9-d810ba9372d2,Global Supplies,contact@globalsup.in,+91-22-2500-0103,MG Road Mumbai,IN,INR,IN-GLO-03,S4-1003,APPROVED,manager2
+5d0eaca8-2b2b-445f-ae8c-61774eb3d461,New Vendor Inc,hello@newvendor.com,+1-212-555-0104,5th Avenue New York,US,USD,US-NEW-04,S4-1004,PENDING,
+b1a2882a-a04c-4c35-ad08-1b21dab0c34c,Quality Parts,sales@qualityparts.de,+49-30-5555-0105,Alexanderplatz Berlin,DE,EUR,DE-QUA-05,S4-1005,APPROVED,manager2
+cee0a06d-6c82-4367-a394-fa6e33fe482f,Supply Chain Co,orders@supplychain.uk,+44-161-555-0106,Deansgate Manchester,GB,GBP,GB-SUP-06,S4-1006,APPROVED,manager
+d18b3c19-d375-44aa-851c-dcaf3269cf3f,Materials Plus,info@materialsplus.ca,+1-416-555-0107,King Street Toronto,CA,USD,CA-MAT-07,S4-1007,REJECTED,
+8ac3ac18-51da-400b-b6ef-a659c1ba64ff,Service Provider,support@servicepro.au,+61-2-5550-0108,Pitt Street Sydney,AU,AUD,AU-SER-08,S4-1008,APPROVED,manager2
+53c01f56-9432-4f60-94ea-3f1965c5b717,Industrial Goods,sales@indgoods.fr,+33-1-5555-0109,Champs Elysees Paris,FR,EUR,FR-IND-09,S4-1009,PENDING,
+9969859d-7528-44ee-8de1-2cb51dc350ee,Equipment Rental,rentals@equipment.com,+1-310-555-0110,Sunset Blvd Los Angeles,US,USD,US-EQU-10,S4-1010,APPROVED,manager

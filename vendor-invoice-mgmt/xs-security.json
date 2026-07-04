@@ -1,0 +1,69 @@
+{
+  "xsappname": "vendor-invoice-mgmt",
+  "tenant-mode": "dedicated",
+  "description": "Security profile for Vendor Invoice Management System",
+  "scopes": [
+    { "name": "$XSAPPNAME.Admin",         "description": "Full administrative access" },
+    { "name": "$XSAPPNAME.VendorManager", "description": "Manage invoices for assigned vendors" },
+    { "name": "$XSAPPNAME.Approver",      "description": "Approve or reject submitted invoices" },
+    { "name": "$XSAPPNAME.Viewer",        "description": "Read-only access to approved invoices and reports" }
+  ],
+  "attributes": [
+    {
+      "name": "managerId",
+      "description": "Vendor Manager identifier used for row-level security",
+      "valueType": "string"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Administrator",
+      "scope-references": [ "$XSAPPNAME.Admin" ],
+      "attribute-references": []
+    },
+    {
+      "name": "VendorManager",
+      "description": "Vendor Manager",
+      "scope-references": [ "$XSAPPNAME.VendorManager" ],
+      "attribute-references": [ "managerId" ]
+    },
+    {
+      "name": "Approver",
+      "description": "Invoice Approver",
+      "scope-references": [ "$XSAPPNAME.Approver" ],
+      "attribute-references": []
+    },
+    {
+      "name": "Viewer",
+      "description": "Read-only Viewer",
+      "scope-references": [ "$XSAPPNAME.Viewer" ],
+      "attribute-references": []
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "VendorInvoice_Admin",
+      "description": "Vendor Invoice - Administrator",
+      "role-template-references": [ "$XSAPPNAME.Admin" ]
+    },
+    {
+      "name": "VendorInvoice_VendorManager",
+      "description": "Vendor Invoice - Vendor Manager",
+      "role-template-references": [ "$XSAPPNAME.VendorManager" ]
+    },
+    {
+      "name": "VendorInvoice_Approver",
+      "description": "Vendor Invoice - Approver",
+      "role-template-references": [ "$XSAPPNAME.Approver" ]
+    },
+    {
+      "name": "VendorInvoice_Viewer",
+      "description": "Vendor Invoice - Viewer",
+      "role-template-references": [ "$XSAPPNAME.Viewer" ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [ "https://*.hana.ondemand.com/**" ]
+  }
+}

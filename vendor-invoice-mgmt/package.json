@@ -1,0 +1,58 @@
+{
+  "name": "vendor-invoice-mgmt",
+  "version": "1.0.0",
+  "description": "Enterprise Vendor Invoice Management System - SAP CAP Capstone",
+  "repository": "https://github.com/<your-user>/vendor-invoice-mgmt",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/xssec": "^3",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "build": "cds build --production",
+    "deploy": "cds deploy --to sqlite:db/vim.db"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "auth": {
+        "[development]": {
+          "kind": "mocked-auth"
+        },
+        "[production]": {
+          "kind": "xsuaa"
+        }
+      },
+      "S4_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "[production]": {
+          "credentials": {
+            "destination": "S4HANA_BP",
+            "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+          }
+        }
+      }
+    },
+    "[development]": {
+      "auth": {
+        "users": {
+          "admin":    { "roles": ["Admin"],         "attr": {} },
+          "manager":  { "roles": ["VendorManager"], "attr": { "managerId": "manager" } },
+          "approver": { "roles": ["Approver"],       "attr": {} },
+          "viewer":   { "roles": ["Viewer"],         "attr": {} }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+name: vendor-invoice-platform
+
+# ---------------------------------------------------------------------------
+# One Postgres instance hosting one database PER service (data isolation),
+# four stateless CAP microservices, and an nginx gateway that serves the Fiori
+# UI and reverse-proxies each service. Every service is configured purely via
+# environment (12-factor III) and is independently buildable/scalable.
+# ---------------------------------------------------------------------------
+
+x-healthcheck-node: &node-health
+  test: ["CMD-SHELL", "node -e \"fetch('http://localhost:4004/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+  interval: 10s
+  timeout: 5s
+  retries: 15
+  start_period: 20s
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  vendor-service:
+    build: ./services/vendor-service
+    env_file: ./services/vendor-service/.env.example
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck: *node-health
+    expose:
+      - "4004"
+
+  invoice-service:
+    build: ./services/invoice-service
+    env_file: ./services/invoice-service/.env.example
+    depends_on:
+      postgres:
+        condition: service_healthy
+      vendor-service:
+        condition: service_healthy
+    healthcheck: *node-health
+    expose:
+      - "4004"
+
+  approval-service:
+    build: ./services/approval-service
+    env_file: ./services/approval-service/.env.example
+    depends_on:
+      postgres:
+        condition: service_healthy
+      invoice-service:
+        condition: service_healthy
+    healthcheck: *node-health
+    expose:
+      - "4004"
+
+  integration-service:
+    build: ./services/integration-service
+    env_file: ./services/integration-service/.env.example
+    depends_on:
+      postgres:
+        condition: service_healthy
+      vendor-service:
+        condition: service_healthy
+    healthcheck: *node-health
+    expose:
+      - "4004"
+
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    ports:
+      - "8090:8080"
+    depends_on:
+      vendor-service:
+        condition: service_healthy
+      invoice-service:
+        condition: service_healthy
+      approval-service:
+        condition: service_healthy
+      integration-service:
+        condition: service_healthy
+
+volumes:
+  pgdata:

@@ -1,0 +1,10 @@
+node_modules/
+gen/
+*.db
+*.db-*
+.env
+default-env.json
+*.log
+dist/
+coverage/
+.DS_Store

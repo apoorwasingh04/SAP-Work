@@ -1,0 +1,10 @@
+{
+  "requires": {
+    "[development]": {
+      "auth": { "kind": "mocked-auth" }
+    }
+  },
+  "features": {
+    "assert_integrity": "db"
+  }
+}

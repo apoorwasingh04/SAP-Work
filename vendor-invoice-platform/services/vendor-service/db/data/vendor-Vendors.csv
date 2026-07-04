@@ -1,0 +1,11 @@
+ID,vendorName,email,phone,address,country_code,currency_code,taxId,externalSystemId,status,assignedManager
+f3eee85d-8fb5-4714-9ae2-8e18a7cd2508,Acme Corp,sales@acme.com,+1-415-555-0100,1 Market Street San Francisco,US,USD,US-ACM-01,S4-1001,APPROVED,manager
+44f83d17-7f03-45ab-be64-d30bd5e45b92,Tech Solutions Ltd,info@techsol.co.uk,+44-20-7946-0102,221B Baker Street London,GB,EUR,GB-TEC-02,S4-1002,APPROVED,manager2
+8b53596e-31bb-4000-bfd2-2cfa836f4f3f,Global Supplies,contact@globalsup.in,+91-22-2500-0103,MG Road Mumbai,IN,INR,IN-GLO-03,S4-1003,APPROVED,manager2
+ff574891-6910-4f03-9666-1ddc37ca43d5,New Vendor Inc,hello@newvendor.com,+1-212-555-0104,5th Avenue New York,US,USD,US-NEW-04,S4-1004,PENDING,
+4b06531e-86f8-418a-8550-979f0dfecd84,Quality Parts,sales@qualityparts.de,+49-30-5555-0105,Alexanderplatz Berlin,DE,EUR,DE-QUA-05,S4-1005,APPROVED,manager2
+fd7106e5-2d0f-45ef-a2ad-c9dff00b9421,Supply Chain Co,orders@supplychain.uk,+44-161-555-0106,Deansgate Manchester,GB,GBP,GB-SUP-06,S4-1006,APPROVED,manager
+0e169115-493a-472d-9636-7277c3d2b85f,Materials Plus,info@materialsplus.ca,+1-416-555-0107,King Street Toronto,CA,USD,CA-MAT-07,S4-1007,REJECTED,
+7af97ba7-4001-4c7f-ba4e-ec53988192bf,Service Provider,support@servicepro.au,+61-2-5550-0108,Pitt Street Sydney,AU,AUD,AU-SER-08,S4-1008,APPROVED,manager2
+7ee80954-668b-4d5c-b0cc-64e6f36a184e,Industrial Goods,sales@indgoods.fr,+33-1-5555-0109,Champs Elysees Paris,FR,EUR,FR-IND-09,S4-1009,PENDING,
+689726a2-0ed1-42c6-b26a-fbe1e1951e8c,Equipment Rental,rentals@equipment.com,+1-310-555-0110,Sunset Blvd Los Angeles,US,USD,US-EQU-10,S4-1010,APPROVED,manager

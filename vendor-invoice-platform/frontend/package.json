@@ -1,0 +1,17 @@
+{
+  "name": "vendor-invoice-ui",
+  "version": "1.0.0",
+  "description": "Fiori Elements UI for the Vendor Invoice Management platform",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "start": "npx -y http-server webapp -p 8081 -c-1"
+  },
+  "devDependencies": {
+    "jest": "^29"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/test/**/*.test.js"]
+  }
+}

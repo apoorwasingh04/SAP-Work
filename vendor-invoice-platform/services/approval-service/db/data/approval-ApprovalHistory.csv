@@ -1,0 +1,26 @@
+ID,invoiceID,invoiceNumber,action,actor,actionAt,comments
+425737f7-7cdf-44fd-a435-38760ba5924b,dbb4c3b3-ef06-455c-9b21-1d0f6d606512,INV-006,SUBMITTED,manager,2025-06-05T10:30:00Z,Invoice submitted for approval
+cdae856a-cb46-460a-8d3f-eec07d96579e,56af0197-bb11-4b85-84cd-c97b2145069e,INV-007,SUBMITTED,manager,2025-07-05T10:30:00Z,Invoice submitted for approval
+f6d07bd0-357f-4a24-9fb3-615c02081885,fd01beba-ad6d-4bcf-b5c0-186b0c9da66b,INV-008,SUBMITTED,manager,2025-08-05T10:30:00Z,Invoice submitted for approval
+da1d0341-687b-40e7-817f-78811a5c9a6b,36b0d321-8f0e-428a-8b54-655be098ad2d,INV-009,SUBMITTED,manager,2025-09-05T10:30:00Z,Invoice submitted for approval
+62e972c1-9a91-4a0b-975d-d1ea46316661,962e4ac8-97a7-4c90-89af-1fd090a8e9d7,INV-010,SUBMITTED,manager,2025-10-05T10:30:00Z,Invoice submitted for approval
+85fc3be3-81ed-4a57-825b-dcf221ef355d,a253f1ff-8100-42e0-9b61-013149bd4b92,INV-011,SUBMITTED,manager,2025-11-05T10:30:00Z,Invoice submitted for approval
+e7d5dd2d-712d-439e-a7ac-c6ddad40ab77,a253f1ff-8100-42e0-9b61-013149bd4b92,INV-011,APPROVED,approver,2025-11-05T15:45:00Z,Approved - all documents verified
+072d5b26-6551-4739-90ab-3a897c1b6676,2e913a6e-d870-49b7-9614-54dfdd7575a8,INV-012,SUBMITTED,manager,2025-12-05T10:30:00Z,Invoice submitted for approval
+5b41225b-1610-481c-b642-743603bb0366,2e913a6e-d870-49b7-9614-54dfdd7575a8,INV-012,APPROVED,approver,2025-12-05T15:45:00Z,Approved - all documents verified
+866cf904-c2c1-48d1-bf0c-eda61cec3273,d10cdcd6-80a1-4f06-ab28-af48266fd19d,INV-013,SUBMITTED,manager,2025-01-05T10:30:00Z,Invoice submitted for approval
+a80b606a-7a7b-417e-851c-66708a217e6a,d10cdcd6-80a1-4f06-ab28-af48266fd19d,INV-013,APPROVED,approver,2025-01-05T15:45:00Z,Approved - all documents verified
+a315e2bc-d145-45db-af72-7ee0aeee2689,014963ab-76a9-4db9-b10a-ebc3713c4abf,INV-014,SUBMITTED,manager,2025-02-05T10:30:00Z,Invoice submitted for approval
+c14ac030-167c-4074-8daf-05fbd80367bb,014963ab-76a9-4db9-b10a-ebc3713c4abf,INV-014,APPROVED,approver,2025-02-05T15:45:00Z,Approved - all documents verified
+f17546b5-1e6f-44ff-b0b7-ea6717365e9d,c773705a-6a28-4956-9506-f489a2a5591f,INV-015,SUBMITTED,manager,2025-03-05T10:30:00Z,Invoice submitted for approval
+a9595d65-faab-4915-9a14-5825722ea95a,c773705a-6a28-4956-9506-f489a2a5591f,INV-015,APPROVED,approver,2025-03-05T15:45:00Z,Approved - all documents verified
+48bfe45c-0eb8-4c71-8859-d5749208ea4b,33d31ade-3507-4e40-89ab-dea2b3e5d842,INV-016,SUBMITTED,manager,2025-04-05T10:30:00Z,Invoice submitted for approval
+c08aff54-1bdb-43ad-834f-93ebf9cf9fc1,33d31ade-3507-4e40-89ab-dea2b3e5d842,INV-016,APPROVED,approver,2025-04-05T15:45:00Z,Approved - all documents verified
+1f18e3b3-68a2-4329-ac40-c8e7437bf835,08fbe3ec-7fc0-4d5f-be99-591813d5d19f,INV-017,SUBMITTED,manager,2025-05-05T10:30:00Z,Invoice submitted for approval
+9ad6fbf7-7bf5-4575-b016-a7c80ede1c3b,08fbe3ec-7fc0-4d5f-be99-591813d5d19f,INV-017,REJECTED,approver,2025-05-05T15:45:00Z,Missing supporting documents
+864ed71f-cabc-4886-a06a-4b70359e0f1d,f7340042-2fcb-4217-ba85-def9832302a1,INV-018,SUBMITTED,manager,2025-06-05T10:30:00Z,Invoice submitted for approval
+9eb67e7a-d628-44f8-8cb4-8e7170aa92bb,f7340042-2fcb-4217-ba85-def9832302a1,INV-018,REJECTED,approver,2025-06-05T15:45:00Z,Missing supporting documents
+1df959b4-2b9a-444d-9800-70295b16799f,86e463ec-ff17-44a8-9e44-fcc824e15492,INV-019,SUBMITTED,manager,2025-07-05T10:30:00Z,Invoice submitted for approval
+ce440893-9c39-4ff4-b831-757b49686a1b,86e463ec-ff17-44a8-9e44-fcc824e15492,INV-019,REJECTED,approver,2025-07-05T15:45:00Z,Missing supporting documents
+ec30185d-1947-4a63-9755-e27412a8a326,e7a78f35-b20f-4b04-bb4c-c74f5b5edc3c,INV-020,SUBMITTED,manager,2025-08-05T10:30:00Z,Invoice submitted for approval
+a45bd777-e519-49db-8d28-2eaf0862e662,e7a78f35-b20f-4b04-bb4c-c74f5b5edc3c,INV-020,REJECTED,approver,2025-08-05T15:45:00Z,Missing supporting documents

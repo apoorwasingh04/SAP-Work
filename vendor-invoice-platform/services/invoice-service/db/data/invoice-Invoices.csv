@@ -1,0 +1,21 @@
+ID,invoiceNumber,vendorID,vendorName,invoiceDate,dueDate,amount,currency_code,status,submittedBy,submittedAt,approvedBy,approvedAt,approvalComments,rejectedBy,rejectedAt,rejectionReason
+041bc03a-3a13-454b-8c35-8607535140dd,INV-001,f3eee85d-8fb5-4714-9ae2-8e18a7cd2508,Acme Corp,2025-01-05,2025-01-25,8000.00,USD,DRAFT,,,,,,,,
+5eeef8ba-31bc-4546-8a64-535a10ac4f90,INV-002,44f83d17-7f03-45ab-be64-d30bd5e45b92,Tech Solutions Ltd,2025-02-05,2025-02-25,29000.00,EUR,DRAFT,,,,,,,,
+a9e8d359-71c8-4a7b-82a0-d4525d64ff6b,INV-003,8b53596e-31bb-4000-bfd2-2cfa836f4f3f,Global Supplies,2025-03-05,2025-03-25,18500.00,INR,DRAFT,,,,,,,,
+a57629ad-1519-44a7-8602-9c17933c9a21,INV-004,4b06531e-86f8-418a-8550-979f0dfecd84,Quality Parts,2025-04-05,2025-04-25,26750.00,EUR,DRAFT,,,,,,,,
+35de2835-d3c0-4598-a3e9-e158813de3cd,INV-005,fd7106e5-2d0f-45ef-a2ad-c9dff00b9421,Supply Chain Co,2025-05-05,2025-05-25,18000.00,GBP,DRAFT,,,,,,,,
+dbb4c3b3-ef06-455c-9b21-1d0f6d606512,INV-006,7af97ba7-4001-4c7f-ba4e-ec53988192bf,Service Provider,2025-06-05,2025-06-25,32000.00,AUD,SUBMITTED,manager,2025-06-05T10:30:00Z,,,,,,
+56af0197-bb11-4b85-84cd-c97b2145069e,INV-007,689726a2-0ed1-42c6-b26a-fbe1e1951e8c,Equipment Rental,2025-07-05,2025-07-25,9250.00,USD,SUBMITTED,manager,2025-07-05T10:30:00Z,,,,,,
+fd01beba-ad6d-4bcf-b5c0-186b0c9da66b,INV-008,f3eee85d-8fb5-4714-9ae2-8e18a7cd2508,Acme Corp,2025-08-05,2025-08-25,32000.00,USD,SUBMITTED,manager,2025-08-05T10:30:00Z,,,,,,
+36b0d321-8f0e-428a-8b54-655be098ad2d,INV-009,44f83d17-7f03-45ab-be64-d30bd5e45b92,Tech Solutions Ltd,2025-09-05,2025-09-25,20750.00,EUR,SUBMITTED,manager,2025-09-05T10:30:00Z,,,,,,
+962e4ac8-97a7-4c90-89af-1fd090a8e9d7,INV-010,8b53596e-31bb-4000-bfd2-2cfa836f4f3f,Global Supplies,2025-10-05,2025-10-25,29000.00,INR,SUBMITTED,manager,2025-10-05T10:30:00Z,,,,,,
+a253f1ff-8100-42e0-9b61-013149bd4b92,INV-011,4b06531e-86f8-418a-8550-979f0dfecd84,Quality Parts,2025-11-05,2025-11-25,11000.00,EUR,APPROVED,manager,2025-11-05T10:30:00Z,approver,2025-11-05T15:45:00Z,Approved - all documents verified,,,
+2e913a6e-d870-49b7-9614-54dfdd7575a8,INV-012,fd7106e5-2d0f-45ef-a2ad-c9dff00b9421,Supply Chain Co,2025-12-05,2025-12-25,35750.00,GBP,APPROVED,manager,2025-12-05T10:30:00Z,approver,2025-12-05T15:45:00Z,Approved - all documents verified,,,
+d10cdcd6-80a1-4f06-ab28-af48266fd19d,INV-013,7af97ba7-4001-4c7f-ba4e-ec53988192bf,Service Provider,2025-01-05,2025-01-25,10500.00,AUD,APPROVED,manager,2025-01-05T10:30:00Z,approver,2025-01-05T15:45:00Z,Approved - all documents verified,,,
+014963ab-76a9-4db9-b10a-ebc3713c4abf,INV-014,689726a2-0ed1-42c6-b26a-fbe1e1951e8c,Equipment Rental,2025-02-05,2025-02-25,35000.00,USD,APPROVED,manager,2025-02-05T10:30:00Z,approver,2025-02-05T15:45:00Z,Approved - all documents verified,,,
+c773705a-6a28-4956-9506-f489a2a5591f,INV-015,f3eee85d-8fb5-4714-9ae2-8e18a7cd2508,Acme Corp,2025-03-05,2025-03-25,23000.00,USD,APPROVED,manager,2025-03-05T10:30:00Z,approver,2025-03-05T15:45:00Z,Approved - all documents verified,,,
+33d31ade-3507-4e40-89ab-dea2b3e5d842,INV-016,44f83d17-7f03-45ab-be64-d30bd5e45b92,Tech Solutions Ltd,2025-04-05,2025-04-25,20000.00,EUR,APPROVED,manager,2025-04-05T10:30:00Z,approver,2025-04-05T15:45:00Z,Approved - all documents verified,,,
+08fbe3ec-7fc0-4d5f-be99-591813d5d19f,INV-017,8b53596e-31bb-4000-bfd2-2cfa836f4f3f,Global Supplies,2025-05-05,2025-05-25,12750.00,INR,REJECTED,manager,2025-05-05T10:30:00Z,,,,approver,2025-05-05T15:45:00Z,Missing supporting documents
+f7340042-2fcb-4217-ba85-def9832302a1,INV-018,4b06531e-86f8-418a-8550-979f0dfecd84,Quality Parts,2025-06-05,2025-06-25,39500.00,EUR,REJECTED,manager,2025-06-05T10:30:00Z,,,,approver,2025-06-05T15:45:00Z,Missing supporting documents
+86e463ec-ff17-44a8-9e44-fcc824e15492,INV-019,fd7106e5-2d0f-45ef-a2ad-c9dff00b9421,Supply Chain Co,2025-07-05,2025-07-25,11750.00,GBP,REJECTED,manager,2025-07-05T10:30:00Z,,,,approver,2025-07-05T15:45:00Z,Missing supporting documents
+e7a78f35-b20f-4b04-bb4c-c74f5b5edc3c,INV-020,7af97ba7-4001-4c7f-ba4e-ec53988192bf,Service Provider,2025-08-05,2025-08-25,38000.00,AUD,REJECTED,manager,2025-08-05T10:30:00Z,,,,approver,2025-08-05T15:45:00Z,Missing supporting documents
